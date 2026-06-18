@@ -7,6 +7,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQp0Ixg-7FrGX4niTgT_4y2_or6zRmchM",
+      authDomain: "padres-jersey-tracker.firebaseapp.com",
+      databaseURL: "https://padres-jersey-tracker-default-rtdb.firebaseio.com",
+      projectId: "padres-jersey-tracker",
+      storageBucket: "padres-jersey-tracker.firebasestorage.app",
+      messagingSenderId: "289255239359",
+      appId: "1:289255239359:web:a072701ccfa915c194600a"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    window._fbRef = ref;
+    window._fbSet = set;
+    window._fbOnValue = onValue;
+    window._fbDb = db;
+    window._firebaseReady = true;
+    window.dispatchEvent(new Event("firebaseReady"));
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
